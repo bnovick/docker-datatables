@@ -1,0 +1,19 @@
+version: "2"
+services:
+  webserver:
+    build: ./
+    ports:
+      - "8001:80"
+    depends_on:
+      - db
+    volumes:
+      - ./web:/var/www/html
+  db:
+    environment:
+      MYSQL_ROOT_PASSWORD: mysql
+      MYSQL_USER: mysql
+      MYSQL_PASSWORD: efeaf@@ss1!
+      MYSQL_DATABASE: db
+    image: bn:quotes
+    build:
+      context: ./db
